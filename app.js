@@ -1,5 +1,5 @@
 
-var app = angular.module("monkeyButtApp", ['ngRoute'])
+const app = angular.module("monkeyButtApp", ['ngRoute'])
 
 
 app.config(($routeProvider)=>{
@@ -20,6 +20,15 @@ app.controller("MainCtrl", function($scope) {
 
 
 
-app.controller("ListCtrl", function($scope){
+app.controller("ListCtrl", function($scope, $http){
   console.log("Here in the list controller")
+
+  $http.get("list.json")
+  .then((val)=> {
+    console.log("list.json", val.data);
+    $scope.list = val.data.list;
+  })
+  .catch(()=>{
+    console.log("rejected!")
+  })
 })
