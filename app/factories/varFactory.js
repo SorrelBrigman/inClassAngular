@@ -5,7 +5,11 @@ let bologna;
   return {
     //getter
     getThatVar : ()=>{
-      return "that var!"
+      if(bologna) {
+        return bologna
+      } else {
+        return "bologna"
+      }
     },
     //setter
     setThatVar: () =>{

@@ -1,11 +1,13 @@
 
-app.controller("ListCtrl", function($scope, $http){
+app.controller("ListCtrl", function($scope, $http, myFactory){
   console.log("Here is the list controller")
 
-  $http.get("list.json")
+
+
+
+myFactory.getListItems()
   .then((val)=> {
-    console.log("list.json", val.data);
-    $scope.list = val.data.list;
+    $scope.list = val;
   })
   .catch(()=>{
     console.log("rejected!")
